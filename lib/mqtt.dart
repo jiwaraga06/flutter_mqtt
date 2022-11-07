@@ -101,8 +101,8 @@ class _MqttState extends State<Mqtt> {
           nilai2 = nilaiBesar;
         });
         print("DATA DYEING: $datas");
-      } 
-       if (c[0].topic == "/2022/Majalaya/Printing2/temperature") {
+      }
+      if (c[0].topic == "/2022/Majalaya/Printing2/temperature") {
         var data = payload.split(';');
         double parseIN = double.parse(data[0]);
         double parseOUT = double.parse(data[1]);
@@ -137,46 +137,42 @@ class _MqttState extends State<Mqtt> {
       ),
       body: ListView(
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+          Column(
             children: [
+              const Divider(color: Colors.black, thickness: 2),
+              Text("Steam (UAP)", style: TextStyle(fontSize: 27)),
+              const Divider(color: Colors.black, thickness: 2),
               Column(
                 children: [
-                  Text("Steam (UAP)", style: TextStyle(fontSize: 27)),
-                  Column(
-                    children: [
-                      Container(
-                          child: SfRadialGauge(enableLoadingAnimation: true, animationDuration: 1000, axes: <RadialAxis>[
-                        RadialAxis(minimum: 0, maximum: 11, ranges: <GaugeRange>[
-                          GaugeRange(startValue: 0, endValue: 3, color: Colors.red, startWidth: 10, endWidth: 10),
-                          GaugeRange(startValue: 3, endValue: 4.50, color: Colors.orange, startWidth: 10, endWidth: 10),
-                          GaugeRange(startValue: 4.50, endValue: 11, color: Colors.green, startWidth: 10, endWidth: 10),
-                        ], pointers: <GaugePointer>[
-                          NeedlePointer(
-                              value: nilai1,
-                              animationDuration: 1000,
-                              animationType: AnimationType.ease,
-                              enableAnimation: true,
-                              needleColor: Colors.red,
-                              needleStartWidth: 1,
-                              needleEndWidth: 4,
-                              knobStyle: const KnobStyle(
-                                knobRadius: 0.05,
-                                borderColor: Colors.black,
-                                borderWidth: 0.02,
-                                color: Colors.white,
-                              ))
-                        ], annotations: <GaugeAnnotation>[
-                          GaugeAnnotation(
-                              widget: Container(child: Text(nilai1.toString(), style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))),
-                              angle: 90,
-                              positionFactor: 0.5)
-                        ])
-                      ])),
-                      Text("Dyeing Finishing)", style: TextStyle(fontSize: 24)),
-                    ],
-                  ),
+                  Container(
+                      child: SfRadialGauge(enableLoadingAnimation: true, animationDuration: 1000, axes: <RadialAxis>[
+                    RadialAxis(minimum: 0, maximum: 11, ranges: <GaugeRange>[
+                      GaugeRange(startValue: 0, endValue: 3, color: Colors.red, startWidth: 10, endWidth: 10),
+                      GaugeRange(startValue: 3, endValue: 4.50, color: Colors.orange, startWidth: 10, endWidth: 10),
+                      GaugeRange(startValue: 4.50, endValue: 11, color: Colors.green, startWidth: 10, endWidth: 10),
+                    ], pointers: <GaugePointer>[
+                      NeedlePointer(
+                          value: nilai1,
+                          animationDuration: 1000,
+                          animationType: AnimationType.ease,
+                          enableAnimation: true,
+                          needleColor: Colors.red,
+                          needleStartWidth: 1,
+                          needleEndWidth: 4,
+                          knobStyle: const KnobStyle(
+                            knobRadius: 0.05,
+                            borderColor: Colors.black,
+                            borderWidth: 0.02,
+                            color: Colors.white,
+                          ))
+                    ], annotations: <GaugeAnnotation>[
+                      GaugeAnnotation(
+                          widget: Container(child: Text(nilai1.toString(), style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold))),
+                          angle: 90,
+                          positionFactor: 0.5)
+                    ])
+                  ])),
+                  Text("Dyeing Finishing)", style: TextStyle(fontSize: 24)),
                 ],
               ),
             ],
@@ -186,160 +182,175 @@ class _MqttState extends State<Mqtt> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const Divider(color: Colors.black, thickness: 2),
               Text("HTO", style: TextStyle(fontSize: 27)),
+              const Divider(color: Colors.black, thickness: 2),
+              const SizedBox(height: 20),
               SizedBox(
-                height: 400,
+                height: 450,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: [
-                    Column(
-                      children: [
-                        Container(
-                            child: SfRadialGauge(enableLoadingAnimation: true, animationDuration: 1000, axes: <RadialAxis>[
-                          RadialAxis(minimum: 0, maximum: 250, ranges: <GaugeRange>[
-                            GaugeRange(startValue: 0, endValue: 170, color: Colors.red, startWidth: 10, endWidth: 10),
-                            GaugeRange(startValue: 170, endValue: 200, color: Colors.orange, startWidth: 10, endWidth: 10),
-                            GaugeRange(startValue: 200, endValue: 250, color: Colors.green, startWidth: 10, endWidth: 10),
-                          ], pointers: <GaugePointer>[
-                            NeedlePointer(
-                                value: nilai2,
-                                animationDuration: 1000,
-                                animationType: AnimationType.ease,
-                                enableAnimation: true,
-                                needleColor: Colors.red,
-                                needleStartWidth: 1,
-                                needleEndWidth: 4,
-                                knobStyle: const KnobStyle(
-                                  knobRadius: 0.05,
-                                  borderColor: Colors.black,
-                                  borderWidth: 0.02,
-                                  color: Colors.white,
-                                ))
-                          ], annotations: <GaugeAnnotation>[
-                            GaugeAnnotation(
-                                widget: Container(
-                                  child: Text(nilai2.toString(), style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                                ),
-                                angle: 90,
-                                positionFactor: 0.5)
-                          ])
-                        ])),
-                        Text("Dyeing Finishing", style: TextStyle(fontSize: 24)),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                            child: SfRadialGauge(enableLoadingAnimation: true, animationDuration: 1000, axes: <RadialAxis>[
-                          RadialAxis(minimum: 0, maximum: 250, ranges: <GaugeRange>[
-                            GaugeRange(startValue: 0, endValue: 170, color: Colors.red, startWidth: 10, endWidth: 10),
-                            GaugeRange(startValue: 170, endValue: 200, color: Colors.orange, startWidth: 10, endWidth: 10),
-                            GaugeRange(startValue: 200, endValue: 250, color: Colors.green, startWidth: 10, endWidth: 10),
-                          ], pointers: <GaugePointer>[
-                            NeedlePointer(
-                                value: iN,
-                                animationDuration: 1000,
-                                animationType: AnimationType.ease,
-                                enableAnimation: true,
-                                needleColor: Colors.red,
-                                needleStartWidth: 1,
-                                needleEndWidth: 4,
-                                knobStyle: const KnobStyle(
-                                  knobRadius: 0.05,
-                                  borderColor: Colors.black,
-                                  borderWidth: 0.02,
-                                  color: Colors.white,
-                                ))
-                          ], annotations: <GaugeAnnotation>[
-                            GaugeAnnotation(
-                                widget: Container(
-                                  child: Text(
-                                    iN.toString(),
-                                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    Container(
+                      margin: const EdgeInsets.all(8.0),
+                      decoration: BoxDecoration(border: Border.all(width: 2, color: Colors.black)),
+                      child: Column(
+                        children: [
+                          SfRadialGauge(enableLoadingAnimation: true, animationDuration: 1000, axes: <RadialAxis>[
+                            RadialAxis(minimum: 0, maximum: 250, ranges: <GaugeRange>[
+                              GaugeRange(startValue: 0, endValue: 170, color: Colors.red, startWidth: 10, endWidth: 10),
+                              GaugeRange(startValue: 170, endValue: 200, color: Colors.orange, startWidth: 10, endWidth: 10),
+                              GaugeRange(startValue: 200, endValue: 250, color: Colors.green, startWidth: 10, endWidth: 10),
+                            ], pointers: <GaugePointer>[
+                              NeedlePointer(
+                                  value: nilai2,
+                                  animationDuration: 1000,
+                                  animationType: AnimationType.ease,
+                                  enableAnimation: true,
+                                  needleColor: Colors.red,
+                                  needleStartWidth: 1,
+                                  needleEndWidth: 4,
+                                  knobStyle: const KnobStyle(
+                                    knobRadius: 0.05,
+                                    borderColor: Colors.black,
+                                    borderWidth: 0.02,
+                                    color: Colors.white,
+                                  ))
+                            ], annotations: <GaugeAnnotation>[
+                              GaugeAnnotation(
+                                  widget: Container(
+                                    child: Text(nilai2.toString(), style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                                   ),
-                                ),
-                                angle: 90,
-                                positionFactor: 0.5)
-                          ])
-                        ])),
-                        Text("IN", style: TextStyle(fontSize: 24)),
-                      ],
+                                  angle: 90,
+                                  positionFactor: 0.5)
+                            ])
+                          ]),
+                          Text("Dyeing Finishing", style: TextStyle(fontSize: 24)),
+                        ],
+                      ),
                     ),
-                    Column(
-                      children: [
-                        Container(
-                            child: SfRadialGauge(enableLoadingAnimation: true, animationDuration: 1000, axes: <RadialAxis>[
-                          RadialAxis(minimum: 0, maximum: 250, ranges: <GaugeRange>[
-                            GaugeRange(startValue: 0, endValue: 170, color: Colors.red, startWidth: 10, endWidth: 10),
-                            GaugeRange(startValue: 170, endValue: 200, color: Colors.orange, startWidth: 10, endWidth: 10),
-                            GaugeRange(startValue: 200, endValue: 250, color: Colors.green, startWidth: 10, endWidth: 10),
-                          ], pointers: <GaugePointer>[
-                            NeedlePointer(
-                                value: out,
-                                animationDuration: 1000,
-                                animationType: AnimationType.ease,
-                                enableAnimation: true,
-                                needleColor: Colors.red,
-                                needleStartWidth: 1,
-                                needleEndWidth: 4,
-                                knobStyle: const KnobStyle(
-                                  knobRadius: 0.05,
-                                  borderColor: Colors.black,
-                                  borderWidth: 0.02,
-                                  color: Colors.white,
-                                ))
-                          ], annotations: <GaugeAnnotation>[
-                            GaugeAnnotation(
-                                widget: Container(
-                                  child: Text(
-                                    out.toString(),
-                                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    Container(
+                      margin: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          SfRadialGauge(enableLoadingAnimation: true, animationDuration: 1000, axes: <RadialAxis>[
+                            RadialAxis(minimum: 0, maximum: 250, ranges: <GaugeRange>[
+                              GaugeRange(startValue: 0, endValue: 170, color: Colors.red, startWidth: 10, endWidth: 10),
+                              GaugeRange(startValue: 170, endValue: 200, color: Colors.orange, startWidth: 10, endWidth: 10),
+                              GaugeRange(startValue: 200, endValue: 250, color: Colors.green, startWidth: 10, endWidth: 10),
+                            ], pointers: <GaugePointer>[
+                              NeedlePointer(
+                                  value: iN,
+                                  animationDuration: 1000,
+                                  animationType: AnimationType.ease,
+                                  enableAnimation: true,
+                                  needleColor: Colors.red,
+                                  needleStartWidth: 1,
+                                  needleEndWidth: 4,
+                                  knobStyle: const KnobStyle(
+                                    knobRadius: 0.05,
+                                    borderColor: Colors.black,
+                                    borderWidth: 0.02,
+                                    color: Colors.white,
+                                  ))
+                            ], annotations: <GaugeAnnotation>[
+                              GaugeAnnotation(
+                                  widget: Container(
+                                    child: Text(
+                                      iN.toString(),
+                                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                    ),
                                   ),
-                                ),
-                                angle: 90,
-                                positionFactor: 0.5)
-                          ])
-                        ])),
-                        Text("OUT", style: TextStyle(fontSize: 24)),
-                      ],
+                                  angle: 90,
+                                  positionFactor: 0.5)
+                            ])
+                          ]),
+                          Text("IN", style: TextStyle(fontSize: 24)),
+                          Text("Printing 2", style: TextStyle(fontSize: 24)),
+                        ],
+                      ),
                     ),
-                    Column(
-                      children: [
-                        Container(
-                            child: SfRadialGauge(enableLoadingAnimation: true, animationDuration: 1000, axes: <RadialAxis>[
-                          RadialAxis(minimum: 0, maximum: 250, ranges: <GaugeRange>[
-                            GaugeRange(startValue: 0, endValue: 170, color: Colors.red, startWidth: 10, endWidth: 10),
-                            GaugeRange(startValue: 170, endValue: 200, color: Colors.orange, startWidth: 10, endWidth: 10),
-                            GaugeRange(startValue: 200, endValue: 250, color: Colors.green, startWidth: 10, endWidth: 10),
-                          ], pointers: <GaugePointer>[
-                            NeedlePointer(
-                                value: delta,
-                                animationDuration: 1000,
-                                animationType: AnimationType.ease,
-                                enableAnimation: true,
-                                needleColor: Colors.red,
-                                needleStartWidth: 1,
-                                needleEndWidth: 4,
-                                knobStyle: const KnobStyle(
-                                  knobRadius: 0.05,
-                                  borderColor: Colors.black,
-                                  borderWidth: 0.02,
-                                  color: Colors.white,
-                                ))
-                          ], annotations: <GaugeAnnotation>[
-                            GaugeAnnotation(
-                                widget: Container(
-                                  child: Text(
-                                    delta.toString(),
-                                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    Container(
+                      margin: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          SfRadialGauge(enableLoadingAnimation: true, animationDuration: 1000, axes: <RadialAxis>[
+                            RadialAxis(minimum: 0, maximum: 250, ranges: <GaugeRange>[
+                              GaugeRange(startValue: 0, endValue: 170, color: Colors.red, startWidth: 10, endWidth: 10),
+                              GaugeRange(startValue: 170, endValue: 200, color: Colors.orange, startWidth: 10, endWidth: 10),
+                              GaugeRange(startValue: 200, endValue: 250, color: Colors.green, startWidth: 10, endWidth: 10),
+                            ], pointers: <GaugePointer>[
+                              NeedlePointer(
+                                  value: out,
+                                  animationDuration: 1000,
+                                  animationType: AnimationType.ease,
+                                  enableAnimation: true,
+                                  needleColor: Colors.red,
+                                  needleStartWidth: 1,
+                                  needleEndWidth: 4,
+                                  knobStyle: const KnobStyle(
+                                    knobRadius: 0.05,
+                                    borderColor: Colors.black,
+                                    borderWidth: 0.02,
+                                    color: Colors.white,
+                                  ))
+                            ], annotations: <GaugeAnnotation>[
+                              GaugeAnnotation(
+                                  widget: Container(
+                                    child: Text(
+                                      out.toString(),
+                                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                    ),
                                   ),
-                                ),
-                                angle: 90,
-                                positionFactor: 0.5)
-                          ])
-                        ])),
-                        Text("DELTA", style: TextStyle(fontSize: 24)),
-                      ],
+                                  angle: 90,
+                                  positionFactor: 0.5)
+                            ])
+                          ]),
+                          Text("OUT", style: TextStyle(fontSize: 24)),
+                          Text("Printing 2", style: TextStyle(fontSize: 24)),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          SfRadialGauge(enableLoadingAnimation: true, animationDuration: 1000, axes: <RadialAxis>[
+                            RadialAxis(minimum: 0, maximum: 250, ranges: <GaugeRange>[
+                              GaugeRange(startValue: 0, endValue: 170, color: Colors.red, startWidth: 10, endWidth: 10),
+                              GaugeRange(startValue: 170, endValue: 200, color: Colors.orange, startWidth: 10, endWidth: 10),
+                              GaugeRange(startValue: 200, endValue: 250, color: Colors.green, startWidth: 10, endWidth: 10),
+                            ], pointers: <GaugePointer>[
+                              NeedlePointer(
+                                  value: delta,
+                                  animationDuration: 1000,
+                                  animationType: AnimationType.ease,
+                                  enableAnimation: true,
+                                  needleColor: Colors.red,
+                                  needleStartWidth: 1,
+                                  needleEndWidth: 4,
+                                  knobStyle: const KnobStyle(
+                                    knobRadius: 0.05,
+                                    borderColor: Colors.black,
+                                    borderWidth: 0.02,
+                                    color: Colors.white,
+                                  ))
+                            ], annotations: <GaugeAnnotation>[
+                              GaugeAnnotation(
+                                  widget: Container(
+                                    child: Text(
+                                      delta.toString(),
+                                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  angle: 90,
+                                  positionFactor: 0.5)
+                            ])
+                          ]),
+                          Text("DELTA", style: TextStyle(fontSize: 24)),
+                          Text("Printing 2", style: TextStyle(fontSize: 24)),
+                        ],
+                      ),
                     ),
                   ],
                 ),
