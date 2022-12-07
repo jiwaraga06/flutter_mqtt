@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:flutter_mqtt/model/model.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
@@ -13,12 +14,13 @@ class Broker {
   Broker._internal();
 
   //Define class variables:
-
-  String broker = 'mq01.sipatex.co.id';
-  int port = 8838;
-  String username = 'it';
-  String password = 'it1234';
-  String clientIdentifier = 'mqttx_58a96ab2';
+int random = Random().nextInt(100000);
+    // print('STB_mqttx_ ${random}' );
+  // String broker = 'mq01.sipatex.co.id';
+  // int port = 8838;
+  // String username = 'it';
+  // String password = 'it1234';
+  // String clientIdentifier = 'STB_mqttx_ $random';
   MqttServerClient? client;
   StreamSubscription? subscription;
   List<MyModel> gaugeModel = [];
@@ -26,7 +28,7 @@ class Broker {
   Future<MqttServerClient> connect() async {
     MqttServerClient client = MqttServerClient.withPort(
       'mq01.sipatex.co.id',
-      'mqttx_58a96ab2',
+      'SM_mqttx_2019SM',
       8838,
     );
     client.logging(on: true);
