@@ -2,7 +2,7 @@
     package="com.example.flutter_mqtt">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="Flutter MQTT"
+        android:label="MQTT"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
